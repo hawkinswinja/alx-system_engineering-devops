@@ -8,3 +8,4 @@ pwd-prints working directory
 8-firstdelete -delete file betty
 9-firstdirdeletion - delete directory my_first_directory
 10-back - move up one level
+11-lists - list all files in the current, parent and boot directory
