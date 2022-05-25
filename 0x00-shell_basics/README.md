@@ -7,3 +7,4 @@ pwd-prints working directory
 7-movethatfile - move file from directory to directory
 8-firstdelete -delete file betty
 9-firstdirdeletion - delete directory my_first_directory
+10-back - move up one level
