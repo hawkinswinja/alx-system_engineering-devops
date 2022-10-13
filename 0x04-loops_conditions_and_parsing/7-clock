@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#this script dsiplays hours and their minutes
+hour=0
+while ((hour <= 12))
+do
+    echo "Hour: $hour"
+    min=1
+    while ((min < 60))
+    do
+        echo "$min"
+	((min+=1))
+    done
+    ((hour+=1))
+done

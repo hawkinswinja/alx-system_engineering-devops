@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#using while loop for condition
+i=0
+while ((i < 10))
+do
+    echo "Best School"
+    ((i += 1))
+done
