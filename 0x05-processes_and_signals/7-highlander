@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#This script prints indefinitely and continues after a SIGTERm
+n=1
+while ((n))
+do
+    echo "To infinity and beyond"
+    sleep 2
+    trap "echo 'I am invincible!!!'" SIGTERM
+done
