@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #This script shows all running IP4s
-ip -4 addr | grep  -oP "(?<=inet\s)\d+(\.\d+){3}"
+#ip -4 addr | grep  -oP "(?<=inet\s)\d+(\.\d+){3}"
+hostname -I
