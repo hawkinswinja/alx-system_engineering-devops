@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+file='/etc/nginx/sites-available/default'
+e4='error_page 404 \/custom404.html;\n'
+location='location = \/custom404.html {\n  root \/usr\/share\/nginx\/html;\n  internal;\n}'
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom404.html
+sed -i "s/server_name _;/$e4$location\\nserver_name _;/g" $file
+service nginx restart
+curl -sI localhost/xyz
+curl localhost/xyzfoo
+

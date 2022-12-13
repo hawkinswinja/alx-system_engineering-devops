@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+sed -i "s/server_name _;/server_name _;\\n\\trewrite ^\/redirect_me \/index1.html permanent;/g" /etc/nginx/sites-available/default
+service nginx restart
+curl -sI localhost/redirect_me

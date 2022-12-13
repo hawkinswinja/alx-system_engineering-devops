@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#setup and config nginx on a server
+apt-get update
+apt-get install -y nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+sed -i "s/server_name _;/server_name _;\\n\\trewrite ^\/redirect_me \/index1.html permanent;/g" /etc/nginx/sites-available/default
+service nginx restart
