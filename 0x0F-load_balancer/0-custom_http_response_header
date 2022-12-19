@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#setup and config nginx on a server
+file='/etc/nginx/sites-available/default'
+apt-get update
+apt-get install -y nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+sed -i "s/server_name _;/server_name _;\\n\\trewrite ^\/redirect_me \/index1.html permanent;/g" $file
+e4='error_page 404 \/custom404.html;\n'
+location='location = \/custom404.html {\n  root \/usr\/share\/nginx\/html;\n  internal;\n}'
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom404.html
+sed -i "s/server_name _;/$e4$location\\nserver_name _;/g" $file
+sed -i "s/server_name _;/add_header X-Served-By '$HOSTNAME';\\nserver_name _;/g" $file
+service nginx restart
