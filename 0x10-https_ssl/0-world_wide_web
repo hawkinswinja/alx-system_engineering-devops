@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#get the RECORD type and server ip of domain and its subdomain
+subdomain() {
+  www=$(dig "$2.$1" | grep -iA1 'Answer section' | awk \{'print $4, $5'\})
+  info=($www)
+  echo "The subdomain $2 is a ""${info[0]}"" and points to ""${info[1]}"
+}
+
+if [ "$#" == 1 ]
+then
+  subdomain "$1" "www"
+  subdomain "$1" "lb-01"
+  subdomain "$1" "web-01"
+  subdomain "$1" "web-02"
+else
+  subdomain "$1" "$2"
+fi 
