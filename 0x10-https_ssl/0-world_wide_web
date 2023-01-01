@@ -3,7 +3,7 @@
 subdomain() {
   www=$(dig "$2.$1" | grep -iA1 'Answer section' | awk \{'print $4, $5'\})
   info=($www)
-  echo "The subdomain $2 is a ""${info[0]}"" and points to ""${info[1]}"
+  echo "The subdomain $2 is a ""${info[0]}"" record and points to ""${info[1]}"
 }
 
 if [ "$#" == 1 ]
