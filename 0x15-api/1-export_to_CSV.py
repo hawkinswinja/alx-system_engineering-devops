@@ -3,7 +3,6 @@
 
 if __name__ == '__main__':
     import requests
-    import json
     import sys
     import csv
     filename = sys.argv[1] + '.csv'
@@ -12,11 +11,8 @@ if __name__ == '__main__':
     r = requests.get(url)
     usertasks = response.json()
     username = r.json().get('name')
-    data = []
-    for x in usertasks:
-        mytasks = json.dumps("{},{},{},{}".format(sys.argv[1], username,
-                             str(x.get('completed')), str(x.get('title'))))
-        data.append(mytasks)
-    with open(filename, 'w', encoding='UTF8') as f:
-        writer = csv.writer(f)
-        writer.writerow(data)
+    with open(filename, 'w', newline="") as f:
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [sys.argv[1], username, t.get("completed"), t.get("title")]
+         ) for t in usertasks]
