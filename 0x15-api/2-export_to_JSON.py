@@ -2,9 +2,9 @@
 """script to get api data"""
 
 if __name__ == '__main__':
+    import json
     import requests
     import sys
-    import json
     filename = sys.argv[1] + '.json'
     url = 'https://jsonplaceholder.typicode.com/users/' + sys.argv[1]
     response = requests.get(url + '/todos')
